@@ -1,0 +1,37 @@
+{
+  "name": "new",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.jsx",
+  "dependencies": {
+    "decorate-component-with-props": "1.1.0",
+    "draft-js": "0.10.5",
+    "draft-js-alignment-plugin": "2.0.5",
+    "draft-js-drag-n-drop-plugin": "2.0.3",
+    "draft-js-focus-plugin": "2.2.0",
+    "draft-js-image-plugin": "2.0.6",
+    "draft-js-resizeable-plugin": "2.0.8",
+    "draftjs-to-html": "0.8.4",
+    "html-to-draftjs": "1.4.0",
+    "immutable": "4.0.0-rc.12",
+    "material-ui": "0.20.2",
+    "react": "16.5.2",
+    "react-dom": "16.5.2",
+    "react-draft-wysiwyg": "1.13.2",
+    "react-scripts": "2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
