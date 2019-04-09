@@ -10,6 +10,7 @@ import defaultKeyBindings from "./defaultKeyBindings";
 import defaultKeyCommands from "./defaultKeyCommands";
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import '../../../node_modules/draft-js-image-plugin/lib/plugin.css';
+import '../../../node_modules/draft-js-alignment-plugin/lib/plugin.css';
 
 import composeDecorators from "../../utils/composeDecorators";
 import createImagePlugin from "draft-js-image-plugin";
@@ -430,6 +431,7 @@ export class CustomEditor extends React.Component {
           {...hooks}
           onEditorStateChange={this.onChange}
         />
+        <AlignmentTool />
         {/* <Editor
           onChange={this.onEditorStateChange}
           editorState={this.props.editorState}
