@@ -6,12 +6,12 @@ import {
   convertFromRaw,
   ContentState
 } from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
+// import { Editor } from "react-draft-wysiwyg";
 // import Editor from 'draft-js-plugins-editor';
-import PluginEditor, { CustomEditor } from "./components/customEditor/customEditor";
+// import PluginEditor, { CustomEditor } from "./components/customEditor/customEditor";
+import { PluginEditor, initialState } from './lib';
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
-import { initialState } from './utils/constants';
 
 
 class App extends React.Component {
