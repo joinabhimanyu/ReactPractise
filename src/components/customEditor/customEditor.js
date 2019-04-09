@@ -1,21 +1,27 @@
 import { Editor } from "react-draft-wysiwyg";
-import React from "react";
-import { EditorState, convertToRaw, ContentState } from "draft-js";
+// import Editor from 'draft-js-plugins-editor';
+import React, { Fragment } from "react";
+import { EditorState, convertToRaw, ContentState, DefaultDraftBlockRenderMap } from "draft-js";
 import { Map } from "immutable";
 import proxies from "./proxies";
 import moveSelectionToEnd from "./moveSelectionToEnd";
 import resolveDecorators from "./resolveDecorators";
 import defaultKeyBindings from "./defaultKeyBindings";
 import defaultKeyCommands from "./defaultKeyCommands";
-import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
-// export interface IProps {
-//   editorState: EditorState;
-//   toolbar: any;
-//   editorRef: Function;
-//   onChange: Function;
-//   readOnly: boolean;
-// }
+import composeDecorators from "../../utils/composeDecorators";
+import createImagePlugin from "draft-js-image-plugin";
+import createAlignmentPlugin from "draft-js-alignment-plugin";
+import createFocusPlugin from "draft-js-focus-plugin";
+import createResizeablePlugin from "draft-js-resizeable-plugin";
+import createBlockDndPlugin from "draft-js-drag-n-drop-plugin";
+
+const focusPlugin = createFocusPlugin();
+const resizeablePlugin = createResizeablePlugin();
+const blockDndPlugin = createBlockDndPlugin();
+const alignmentPlugin = createAlignmentPlugin();
+const { AlignmentTool } = alignmentPlugin;
 
 const getDecoratorLength = obj => {
   let decorators;
@@ -29,11 +35,91 @@ const getDecoratorLength = obj => {
   return decorators.size != null ? decorators.size : decorators.length;
 };
 
-export default class CustomEditor extends React.Component {
+// plugins: [{"image":["resizable","align","focus","blockDnd"]]
+export default class PluginEditor extends React.Component {
+  constructor(props) {
+    super(props);
+    const plugins = this.constructState();
+    this.state = {
+      plugins
+    };
+  }
+  constructState() {
+    const { plugins: props_plugins } = this.props;
+    let state_plugins;
+    if (props_plugins) {
+      // image plugin
+      const ifilter = props_plugins.filter(x => x.hasOwnProperty('image'));
+      if (ifilter) {
+        const image = ifilter[0]["image"];
+        if (!image) {
+          // no plugin
+          const imagePlugin = createImagePlugin();
+          const plugins = [imagePlugin];
+          state_plugins = plugins;
+        } else {
+          const decorators = [];
+          const plugins = [];
+          // resizable
+          if (image.filter(x => x === 'resizable')) {
+            decorators.push(resizeablePlugin.decorator);
+            plugins.push(resizeablePlugin);
+          }
+          if (image.filter(x => x === 'align')) {
+            decorators.push(alignmentPlugin.decorator);
+            plugins.push(alignmentPlugin);
+          }
+          if (image.filter(x => x === 'focus')) {
+            decorators.push(focusPlugin.decorator);
+            plugins.push(focusPlugin);
+          }
+          if (image.filter(x => x === 'blockDnd')) {
+            decorators.push(blockDndPlugin.decorator);
+            plugins.push(blockDndPlugin);
+          }
+          const decorator = composeDecorators(...decorators);
+          const imagePlugin = createImagePlugin({ decorator });
+          plugins.push(imagePlugin);
+          state_plugins = plugins;
+        }
+      }
+    }
+    return state_plugins;
+  }
+  render() {
+    const { plugins: plugin_props, ...editorConfig } = this.props;
+    const { plugins: state_plugins } = this.state;
+    let editor = null;
+    if (state_plugins) {
+      const align = state_plugins.filter(x => x.hasOwnProperty('AlignmentTool'));
+      if (align && align.length > 0) {
+        editor = <CustomEditor
+          plugins={state_plugins}
+          {...editorConfig}
+        />;
+      } else {
+        editor = <CustomEditor
+          plugins={state_plugins}
+          {...editorConfig}
+        />
+      }
+    } else {
+      editor = <CustomEditor
+        {...editorConfig}
+      />
+    }
+    return (
+      <Fragment>
+        {editor}
+      </Fragment>
+    )
+  }
+}
+
+export class CustomEditor extends React.Component {
   editor;
   constructor(props) {
     super(props);
-
     const plugins = [this.props, ...this.resolvePlugins()];
     plugins.forEach(plugin => {
       if (typeof plugin.initialize !== "function") return;
@@ -45,7 +131,7 @@ export default class CustomEditor extends React.Component {
       this[method] = (...args) => this.editor[method](...args);
     });
 
-    this.state = { readOnly: false }; // TODO for Nik: ask ben why this is relevent
+    this.state = { readOnly: false, plugins: null }; // TODO for Nik: ask ben why this is relevent
   }
   componentWillMount() {
     const decorator = resolveDecorators(
@@ -261,6 +347,30 @@ export default class CustomEditor extends React.Component {
 
     return plugins;
   };
+  resolveCustomStyleMap = () => (
+    this.props.plugins
+      .filter((plug) => plug.customStyleMap !== undefined)
+      .map((plug) => plug.customStyleMap)
+      .concat([this.props.customStyleMap])
+      .reduce((styles, style) => (
+        {
+          ...styles,
+          ...style,
+        }
+      ), {})
+  );
+  resolveblockRenderMap = () => {
+    let blockRenderMap = this.props.plugins
+      .filter((plug) => plug.blockRenderMap !== undefined)
+      .reduce((maps, plug) => maps.merge(plug.blockRenderMap), Map({}));
+    if (this.props.defaultBlockRenderMap) {
+      blockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
+    }
+    if (this.props.blockRenderMap) {
+      blockRenderMap = blockRenderMap.merge(this.props.blockRenderMap);
+    }
+    return blockRenderMap;
+  }
   resolveAccessibilityProps = () => {
     let accessibilityProps = {};
     const plugins = [this.props, ...this.resolvePlugins()];
@@ -294,23 +404,24 @@ export default class CustomEditor extends React.Component {
   render() {
     const pluginHooks = this.createPluginHooks();
     const accessibilityProps = this.resolveAccessibilityProps();
-
+    // const customStyleMap = this.resolveCustomStyleMap();
+    // const blockRenderMap = this.resolveblockRenderMap();
     return (
-      <Editor
-        wrapperClassName={this.props.wrapperClassName}
-        editorClassName={this.props.editorClassName}
-        toolbarClassName={this.props.toolbarClassName}
-        onEditorStateChange={this.onEditorStateChange}
-        editorState={this.props.editorState}
-        toolbar={this.props.toolbar}
-        editorRef={this.editorRef}
-        readOnly={this.props.readOnly || this.state.readOnly}
-        {...this.props}
-        {...accessibilityProps}
-        {...pluginHooks}
-      // customStyleMap={customStyleMap}
-      // blockRenderMap={blockRenderMap}
-      />
+      <Fragment>
+        <Editor
+          wrapperClassName={this.props.wrapperClassName}
+          editorClassName={this.props.editorClassName}
+          toolbarClassName={this.props.toolbarClassName}
+          onEditorStateChange={this.onEditorStateChange}
+          editorState={this.props.editorState}
+          toolbar={this.props.toolbar}
+          editorRef={this.editorRef}
+          readOnly={this.props.readOnly || this.state.readOnly}
+          {...this.props}
+          {...accessibilityProps}
+          {...pluginHooks}
+        />
+      </Fragment>
     );
   }
 }

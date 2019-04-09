@@ -7,17 +7,23 @@ import {
   ContentState
 } from "draft-js";
 // import { Editor } from "react-draft-wysiwyg";
-import CustomEditor from "./customEditor";
+import Editor from 'draft-js-plugins-editor';
+import PluginEditor, { CustomEditor } from "./components/customEditor/customEditor";
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
-import composeDecorators from "./composeDecorators";
+import { initialState } from './utils/constants';
 
+import '../node_modules/draft-js-image-plugin/lib/plugin.css';
+
+/**
+ * custom editor block
+ */
+import composeDecorators from "./utils/composeDecorators";
 import createImagePlugin from "draft-js-image-plugin";
 import createAlignmentPlugin from "draft-js-alignment-plugin";
 import createFocusPlugin from "draft-js-focus-plugin";
 import createResizeablePlugin from "draft-js-resizeable-plugin";
 import createBlockDndPlugin from "draft-js-drag-n-drop-plugin";
-// import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 const focusPlugin = createFocusPlugin();
 const resizeablePlugin = createResizeablePlugin();
@@ -39,54 +45,11 @@ const plugins = [
   resizeablePlugin,
   imagePlugin
 ];
-const initialState = {
-  entityMap: {
-    "0": {
-      type: "IMAGE",
-      mutability: "IMMUTABLE",
-      data: {
-        src:
-          "https://www.draft-js-plugins.com/images/canada-landscape-small.jpg"
-      }
-    }
-  },
-  blocks: [
-    {
-      key: "9gm3s",
-      text:
-        "You can have images in your text field. This is a very rudimentary example, but you can enhance the image plugin with resizing, focus or alignment plugins.",
-      type: "unstyled",
-      depth: 0,
-      inlineStyleRanges: [],
-      entityRanges: [],
-      data: {}
-    },
-    {
-      key: "ov7r",
-      text: " ",
-      type: "atomic",
-      depth: 0,
-      inlineStyleRanges: [],
-      entityRanges: [
-        {
-          offset: 0,
-          length: 1,
-          key: 0
-        }
-      ],
-      data: {}
-    },
-    {
-      key: "e23a8",
-      text: "See advanced examples further down …",
-      type: "unstyled",
-      depth: 0,
-      inlineStyleRanges: [],
-      entityRanges: [],
-      data: {}
-    }
-  ]
-};
+/**
+ * end custom editor block
+ */
+
+
 
 class App extends React.Component {
   constructor(props) {
@@ -111,35 +74,33 @@ class App extends React.Component {
       editorState
     });
   };
-  // onInsertImage = () => {
-  //   debugger;
-  //   const { editorState } = this.state;
-  //   let html = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-  //   html +=
-  //     '<image src="https://www.google.com/webhp?hl=en&ictx=2&sa=X&ved=0ahUKEwi2p9HcqLnhAhUiTd8KHTyyAywQPQgH"></image>';
-  //   const contentBlock = htmlToDraft(html);
-  //   if (contentBlock) {
-  //     const contentState = ContentState.createFromBlockArray(
-  //       contentBlock.contentBlocks
-  //     );
-  //     const editorState = EditorState.createWithContent(contentState);
-  //     this.setState({
-  //       editorState
-  //     });
-  //   }
-  // };
-  onEditorStateChange = (editorState) => {
-    this.setState({
-      editorState
-    });
-  }
   render() {
     const { editorState } = this.state;
 
+    const editorStyle = {
+      boxSizing: 'border-box',
+      border: '1px solid #ddd',
+      cursor: 'text',
+      padding: '16px',
+      borderRadius: '2px',
+      marginBottom: '2em',
+      boxShadow: 'inset 0px 1px 8px -3px #ABABAB',
+      background: '#fefefe'
+    }
+
     return (
       <div>
-        <CustomEditor
-          plugins={plugins}
+        <div style={editorStyle}>
+          <Editor
+            editorState={editorState}
+            onChange={this.onEditorStateChange}
+            plugins={plugins}
+          // ref={(element) => { this.editor = element; }}
+          />
+          <AlignmentTool />
+        </div>
+        {/* <PluginEditor
+          plugins={[{ "image": ["resizable", "align", "focus", "blockDnd"] }]}
           wrapperClassName="wrapper-class"
           editorClassName="editor-class"
           toolbarClassName="toolbar-class"
@@ -173,12 +134,7 @@ class App extends React.Component {
               dropdownClassName: undefined
             }
           }}
-        />
-        {/* <textarea
-          disabled
-          value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
         /> */}
-        {/* <button onClick={this.onInsertImage}>Insert image</button> */}
       </div>
     );
   }
