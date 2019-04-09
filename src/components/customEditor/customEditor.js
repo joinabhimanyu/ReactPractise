@@ -9,6 +9,7 @@ import resolveDecorators from "./resolveDecorators";
 import defaultKeyBindings from "./defaultKeyBindings";
 import defaultKeyCommands from "./defaultKeyCommands";
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import '../../../node_modules/draft-js-image-plugin/lib/plugin.css';
 
 import composeDecorators from "../../utils/composeDecorators";
 import createImagePlugin from "draft-js-image-plugin";
@@ -33,6 +34,17 @@ const getDecoratorLength = obj => {
   }
 
   return decorators.size != null ? decorators.size : decorators.length;
+};
+
+const editorStyle = {
+  boxSizing: 'border-box',
+  border: '1px solid #ddd',
+  cursor: 'text',
+  padding: '16px',
+  borderRadius: '2px',
+  marginBottom: '2em',
+  boxShadow: 'inset 0px 1px 8px -3px #ABABAB',
+  background: '#fefefe'
 };
 
 // plugins: [{"image":["resizable","align","focus","blockDnd"]]
@@ -137,11 +149,11 @@ export class CustomEditor extends React.Component {
     const decorator = resolveDecorators(
       this.props,
       this.getEditorState,
-      this.onEditorStateChange
+      this.onChange
     );
 
     const editorState = EditorState.set(this.props.editorState, { decorator });
-    this.onEditorStateChange(moveSelectionToEnd(editorState));
+    this.onChange(moveSelectionToEnd(editorState));
   }
   componentWillReceiveProps(next) {
     const curr = this.props;
@@ -163,7 +175,7 @@ export class CustomEditor extends React.Component {
     const editorState = EditorState.set(next.editorState, {
       decorator: currDec
     });
-    this.onEditorStateChange(moveSelectionToEnd(editorState));
+    this.onChange(moveSelectionToEnd(editorState));
   }
 
   componentWillUnmount() {
@@ -171,7 +183,7 @@ export class CustomEditor extends React.Component {
       if (plugin.willUnmount) {
         plugin.willUnmount({
           getEditorState: this.getEditorState,
-          setEditorState: this.onEditorStateChange
+          setEditorState: this.onChange
         });
       }
     });
@@ -179,7 +191,7 @@ export class CustomEditor extends React.Component {
 
   // Cycle through the plugins, changing the editor state with what the plugins
   // changed (or didn't)
-  onEditorStateChange = editorState => {
+  onChange = editorState => {
     let newEditorState = editorState;
     this.resolvePlugins().forEach(plugin => {
       if (plugin.onChange) {
@@ -213,7 +225,7 @@ export class CustomEditor extends React.Component {
   getPluginMethods = () => ({
     getPlugins: this.getPlugins,
     getProps: this.getProps,
-    setEditorState: this.onEditorStateChange,
+    setEditorState: this.onChange,
     getEditorState: this.getEditorState,
     getReadOnly: this.getReadOnly,
     setReadOnly: this.setReadOnly,
@@ -403,25 +415,27 @@ export class CustomEditor extends React.Component {
 
   render() {
     const pluginHooks = this.createPluginHooks();
+    const { keyBindingFn, ...hooks } = pluginHooks;
     const accessibilityProps = this.resolveAccessibilityProps();
-    // const customStyleMap = this.resolveCustomStyleMap();
-    // const blockRenderMap = this.resolveblockRenderMap();
+    const customStyleMap = this.resolveCustomStyleMap();
+    const blockRenderMap = this.resolveblockRenderMap();
     return (
-      <Fragment>
+      <div style={editorStyle}>
         <Editor
-          wrapperClassName={this.props.wrapperClassName}
-          editorClassName={this.props.editorClassName}
-          toolbarClassName={this.props.toolbarClassName}
-          onEditorStateChange={this.onEditorStateChange}
-          editorState={this.props.editorState}
-          toolbar={this.props.toolbar}
           editorRef={this.editorRef}
-          readOnly={this.props.readOnly || this.state.readOnly}
+          customStyleMap={customStyleMap}
+          blockRenderMap={blockRenderMap}
           {...this.props}
           {...accessibilityProps}
-          {...pluginHooks}
+          {...hooks}
+          onEditorStateChange={this.onChange}
         />
-      </Fragment>
+        {/* <Editor
+          onChange={this.onEditorStateChange}
+          editorState={this.props.editorState}
+          {...this.props}
+        /> */}
+      </div>
     );
   }
 }

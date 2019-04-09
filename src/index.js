@@ -6,49 +6,12 @@ import {
   convertFromRaw,
   ContentState
 } from "draft-js";
-// import { Editor } from "react-draft-wysiwyg";
-import Editor from 'draft-js-plugins-editor';
+import { Editor } from "react-draft-wysiwyg";
+// import Editor from 'draft-js-plugins-editor';
 import PluginEditor, { CustomEditor } from "./components/customEditor/customEditor";
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
 import { initialState } from './utils/constants';
-
-import '../node_modules/draft-js-image-plugin/lib/plugin.css';
-
-/**
- * custom editor block
- */
-import composeDecorators from "./utils/composeDecorators";
-import createImagePlugin from "draft-js-image-plugin";
-import createAlignmentPlugin from "draft-js-alignment-plugin";
-import createFocusPlugin from "draft-js-focus-plugin";
-import createResizeablePlugin from "draft-js-resizeable-plugin";
-import createBlockDndPlugin from "draft-js-drag-n-drop-plugin";
-
-const focusPlugin = createFocusPlugin();
-const resizeablePlugin = createResizeablePlugin();
-const blockDndPlugin = createBlockDndPlugin();
-const alignmentPlugin = createAlignmentPlugin();
-const { AlignmentTool } = alignmentPlugin;
-
-const decorator = composeDecorators(
-  resizeablePlugin.decorator,
-  alignmentPlugin.decorator,
-  focusPlugin.decorator,
-  blockDndPlugin.decorator
-);
-const imagePlugin = createImagePlugin({ decorator });
-const plugins = [
-  blockDndPlugin,
-  focusPlugin,
-  alignmentPlugin,
-  resizeablePlugin,
-  imagePlugin
-];
-/**
- * end custom editor block
- */
-
 
 
 class App extends React.Component {
@@ -77,35 +40,16 @@ class App extends React.Component {
   render() {
     const { editorState } = this.state;
 
-    const editorStyle = {
-      boxSizing: 'border-box',
-      border: '1px solid #ddd',
-      cursor: 'text',
-      padding: '16px',
-      borderRadius: '2px',
-      marginBottom: '2em',
-      boxShadow: 'inset 0px 1px 8px -3px #ABABAB',
-      background: '#fefefe'
-    }
-
     return (
       <div>
-        <div style={editorStyle}>
-          <Editor
-            editorState={editorState}
-            onChange={this.onEditorStateChange}
-            plugins={plugins}
-          // ref={(element) => { this.editor = element; }}
-          />
-          <AlignmentTool />
-        </div>
-        {/* <PluginEditor
+        <PluginEditor
           plugins={[{ "image": ["resizable", "align", "focus", "blockDnd"] }]}
           wrapperClassName="wrapper-class"
           editorClassName="editor-class"
           toolbarClassName="toolbar-class"
           onEditorStateChange={this.onEditorStateChange}
           editorState={editorState}
+          defaultBlockRenderMap={true}
           toolbar={{
             options: [
               "inline",
@@ -134,7 +78,7 @@ class App extends React.Component {
               dropdownClassName: undefined
             }
           }}
-        /> */}
+        />
       </div>
     );
   }
