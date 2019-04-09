@@ -1,13 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import Image from "./image";
 import {
   EditorState,
   convertToRaw,
   convertFromRaw,
   ContentState
 } from "draft-js";
+// import { Editor } from "react-draft-wysiwyg";
 import CustomEditor from "./customEditor";
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
@@ -18,6 +17,7 @@ import createAlignmentPlugin from "draft-js-alignment-plugin";
 import createFocusPlugin from "draft-js-focus-plugin";
 import createResizeablePlugin from "draft-js-resizeable-plugin";
 import createBlockDndPlugin from "draft-js-drag-n-drop-plugin";
+// import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 const focusPlugin = createFocusPlugin();
 const resizeablePlugin = createResizeablePlugin();
@@ -91,8 +91,8 @@ const initialState = {
 class App extends React.Component {
   constructor(props) {
     super(props);
-    // const html = "<p>Hey this <strong>editor</strong> rocks 😀</p>";
-    // const contentBlock = htmlToDraft(html);
+    const html = "<p>Hey this <strong>editor</strong> rocks 😀</p>";
+    const contentBlock = htmlToDraft(html);
     // if (contentBlock) {
     //   const contentState = ContentState.createFromBlockArray(
     //     contentBlock.contentBlocks
@@ -104,6 +104,7 @@ class App extends React.Component {
     this.state = {
       editorState
     };
+    //}
   }
   onEditorStateChange = editorState => {
     this.setState({
@@ -127,51 +128,58 @@ class App extends React.Component {
   //     });
   //   }
   // };
+  onEditorStateChange = (editorState) => {
+    this.setState({
+      editorState
+    });
+  }
   render() {
     const { editorState } = this.state;
 
     return (
-      <MuiThemeProvider>
-        <div>
-          <CustomEditor
-            plugins={plugins}
-            editorState={editorState}
-            toolbar={{
+      <div>
+        <CustomEditor
+          plugins={plugins}
+          wrapperClassName="wrapper-class"
+          editorClassName="editor-class"
+          toolbarClassName="toolbar-class"
+          onEditorStateChange={this.onEditorStateChange}
+          editorState={editorState}
+          toolbar={{
+            options: [
+              "inline",
+              "blockType",
+              "fontSize",
+              "fontFamily",
+              "list",
+              "textAlign",
+              "colorPicker",
+              "image",
+              "history"
+            ],
+            fontFamily: {
               options: [
-                "inline",
-                "blockType",
-                "fontSize",
-                "fontFamily",
-                "list",
-                "textAlign",
-                "colorPicker",
-                "image",
-                "history"
+                "Arial",
+                "Comic Sans MS",
+                "Consolas",
+                "Courier New",
+                "Georgia",
+                "Tahoma",
+                "Times New Roman",
+                "Verdana"
               ],
-              fontFamily: {
-                options: [
-                  "Arial",
-                  "Comic Sans MS",
-                  "Consolas",
-                  "Courier New",
-                  "Georgia",
-                  "Tahoma",
-                  "Times New Roman",
-                  "Verdana"
-                ],
-                className: undefined,
-                component: undefined,
-                dropdownClassName: undefined
-              }
-            }}
-          />
-          <textarea
-            disabled
-            value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
-          />
-          {/* <button onClick={this.onInsertImage}>Insert image</button> */}
-        </div>
-      </MuiThemeProvider>
+              className: undefined,
+              component: undefined,
+              dropdownClassName: undefined
+            }
+          }}
+        />
+        {/* <textarea
+          disabled
+          value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
+        /> */}
+        {/* <button onClick={this.onInsertImage}>Insert image</button> */}
+      </div>
     );
   }
 }
