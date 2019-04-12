@@ -1,7 +1,6 @@
 import { Editor } from "react-draft-wysiwyg";
-// import Editor from 'draft-js-plugins-editor';
 import React, { Fragment } from "react";
-import { EditorState, convertToRaw, ContentState, DefaultDraftBlockRenderMap } from "draft-js";
+import { EditorState, convertToRaw, Modifier, DefaultDraftBlockRenderMap } from "draft-js";
 import { Map } from "immutable";
 import proxies from "./proxies";
 import moveSelectionToEnd from "./moveSelectionToEnd";
@@ -11,6 +10,8 @@ import defaultKeyCommands from "./defaultKeyCommands";
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import '../../../node_modules/draft-js-image-plugin/lib/plugin.css';
 import '../../../node_modules/draft-js-alignment-plugin/lib/plugin.css';
+import draftToHtml from "draftjs-to-html";
+
 
 import composeDecorators from "../utils/composeDecorators";
 import createImagePlugin from "draft-js-image-plugin";
@@ -20,7 +21,7 @@ import createResizeablePlugin from "draft-js-resizeable-plugin";
 import createBlockDndPlugin from "draft-js-drag-n-drop-plugin";
 
 const focusPlugin = createFocusPlugin();
-const resizeablePlugin = createResizeablePlugin();
+const resizeablePlugin = createResizeablePlugin({vertical:'absolute',horizontal:'absolute'});
 const blockDndPlugin = createBlockDndPlugin();
 const alignmentPlugin = createAlignmentPlugin();
 const { AlignmentTool } = alignmentPlugin;
@@ -74,19 +75,19 @@ export default class PluginEditor extends React.Component {
           const decorators = [];
           const plugins = [];
           // resizable
-          if (image.filter(x => x === 'resizable')) {
+          if (image.find(x => x === 'resizable')) {
             decorators.push(resizeablePlugin.decorator);
             plugins.push(resizeablePlugin);
           }
-          if (image.filter(x => x === 'align')) {
+          if (image.find(x => x === 'align')) {
             decorators.push(alignmentPlugin.decorator);
             plugins.push(alignmentPlugin);
           }
-          if (image.filter(x => x === 'focus')) {
+          if (image.find(x => x === 'focus')) {
             decorators.push(focusPlugin.decorator);
             plugins.push(focusPlugin);
           }
-          if (image.filter(x => x === 'blockDnd')) {
+          if (image.find(x => x === 'blockDnd')) {
             decorators.push(blockDndPlugin.decorator);
             plugins.push(blockDndPlugin);
           }
@@ -106,20 +107,27 @@ export default class PluginEditor extends React.Component {
     if (state_plugins) {
       const align = state_plugins.filter(x => x.hasOwnProperty('AlignmentTool'));
       if (align && align.length > 0) {
-        editor = <CustomEditor
-          plugins={state_plugins}
-          {...editorConfig}
-        />;
+        editor = <div style={editorStyle}>
+          <CustomEditor
+            plugins={state_plugins}
+            {...editorConfig}
+          />
+          <AlignmentTool />
+        </div>;
       } else {
-        editor = <CustomEditor
-          plugins={state_plugins}
-          {...editorConfig}
-        />
+        editor = <div style={editorStyle}>
+          <CustomEditor
+            plugins={state_plugins}
+            {...editorConfig}
+          />
+        </div>
       }
     } else {
-      editor = <CustomEditor
-        {...editorConfig}
-      />
+      editor = <div style={editorStyle}>
+        <CustomEditor
+          {...editorConfig}
+        />
+      </div>
     }
     return (
       <Fragment>
@@ -413,7 +421,21 @@ export class CustomEditor extends React.Component {
 
     return accessibilityProps;
   };
+  handlePastedText = (text, html) => {
+    const newContent = Modifier.insertText(
+      this.props.editorState.getCurrentContent(),
+      this.props.editorState.getSelection(),
+      text
+    );
 
+    // update our state with the new editor content
+    this.onChange(EditorState.push(
+      this.props.editorState,
+      newContent,
+      'insert-characters'
+    ));
+    return true;
+  }
   render() {
     const pluginHooks = this.createPluginHooks();
     const { keyBindingFn, ...hooks } = pluginHooks;
@@ -421,23 +443,20 @@ export class CustomEditor extends React.Component {
     const customStyleMap = this.resolveCustomStyleMap();
     const blockRenderMap = this.resolveblockRenderMap();
     return (
-      <div style={editorStyle}>
-        <Editor
-          editorRef={this.editorRef}
-          customStyleMap={customStyleMap}
-          blockRenderMap={blockRenderMap}
-          {...this.props}
-          {...accessibilityProps}
-          {...hooks}
-          onEditorStateChange={this.onChange}
-        />
-        <AlignmentTool />
-        {/* <Editor
-          onChange={this.onEditorStateChange}
-          editorState={this.props.editorState}
-          {...this.props}
-        /> */}
-      </div>
+      <Editor
+        editorRef={this.editorRef}
+        customStyleMap={customStyleMap}
+        blockRenderMap={blockRenderMap}
+        {...this.props}
+        {...accessibilityProps}
+        {...hooks}
+        onEditorStateChange={this.onChange}
+        handlePastedText={this.handlePastedText}
+      />
+      // <div >
+
+      //   <AlignmentTool />
+      // </div>
     );
   }
 }
