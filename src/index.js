@@ -7,12 +7,41 @@ import {
   ContentState
 } from "draft-js";
 // import { Editor } from "react-draft-wysiwyg";
-// import Editor from 'draft-js-plugins-editor';
-// import PluginEditor, { CustomEditor } from "./components/customEditor/customEditor";
+import Editor from 'draft-js-plugins-editor';
 import { PluginEditor, initialState } from './lib';
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
 
+
+import composeDecorators from "./lib/utils/composeDecorators";
+import createImagePlugin from "draft-js-image-plugin";
+import createAlignmentPlugin from "draft-js-alignment-plugin";
+import createFocusPlugin from "draft-js-focus-plugin";
+import createResizeablePlugin from "draft-js-resizeable-plugin";
+import createBlockDndPlugin from "draft-js-drag-n-drop-plugin";
+
+const focusPlugin = createFocusPlugin();
+const resizeablePlugin = createResizeablePlugin();
+const blockDndPlugin = createBlockDndPlugin();
+const alignmentPlugin = createAlignmentPlugin();
+const { AlignmentTool } = alignmentPlugin;
+
+
+const decorator = composeDecorators(
+  resizeablePlugin.decorator,
+  alignmentPlugin.decorator,
+  focusPlugin.decorator,
+  blockDndPlugin.decorator
+);
+const imagePlugin = createImagePlugin({ decorator });
+
+const plugins = [
+  blockDndPlugin,
+  focusPlugin,
+  alignmentPlugin,
+  resizeablePlugin,
+  imagePlugin
+];
 
 class App extends React.Component {
   constructor(props) {
@@ -42,6 +71,12 @@ class App extends React.Component {
 
     return (
       <div>
+        {/* <Editor
+          onChange={this.onEditorStateChange}
+          editorState={editorState}
+          plugins={plugins}
+        /> */}
+        <textarea value={draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()))}/>
         <PluginEditor
           plugins={[{ "image": ["resizable", "align", "focus", "blockDnd"] }]}
           wrapperClassName="wrapper-class"

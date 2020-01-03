@@ -1,0 +1,700 @@
+Request URL: https://cat-dev-api.pbps.awsnonprod.healthcareit.net/api/ecodocx/getPreview
+Request Method: POST
+Status Code: 200 
+Remote Address: 10.220.20.161:443
+Referrer Policy: no-referrer-when-downgrade
+access-control-allow-origin: *
+content-length: 181800
+content-type: application/pdf
+date: Mon, 15 Apr 2019 15:07:40 GMT
+status: 200
+x-powered-by: Express
+Provisional headers are shown
+Content-Type: application/xml
+Origin: http://10.220.16.218:443
+Referer: http://10.220.16.218:443/Route/TemplateCustomization
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36
+<request>
+<templateName>KJackson</templateName>
+<backerTemplateName>SimpleBacker</backerTemplateName>
+<uniqueId>1-621</uniqueId>
+<options>
+    <option>
+      <name>primaryColor</name>
+      <value>1999CE</value>
+    </option>
+    <option>
+      <name>secondaryColor</name>
+      <value>D8EDF9</value>
+    </option>
+    <option>
+      <name>tertiaryColor</name>
+      <value>1999CE</value>
+    </option>
+    <option>
+      <name>quaternaryColor</name>
+      <value>FFFFFF</value>
+    </option>
+    <option>
+      <name>providerName</name>
+      <value>Latrice &amp; Mays</value>
+    </option>
+    <option>
+      <name>amountOwedLabel</name>
+      <value/>
+    </option>
+    <option>
+      <name>paymentDueLabel</name>
+      <value/>
+    </option>
+    <option>
+      <name>messages</name>
+      <value>This is a test messages.</value>
+    </option>
+    <option>
+      <name>backerTermsAndConditions</name>
+      <value><![CDATA[<html><body><p>Terms and Conditions Message</p></body></html>]]></value>
+    </option>
+    <option>
+      <name>paymentCards</name>
+      <value/>
+    </option>
+    <option>
+      <name>onsertContent</name>
+      <value><![CDATA[<html><body><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p><img src="data:image/jpeg;base64,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" alt="undefined" style="float:right;height: 79;width: 92"/><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p></body></html>]]></value>
+    </option>
+  </options>
+﻿<canonical>
+  <CSSPDocument id="ID" type="Top Line Medical Bill" date="Date" productID="ProductID" hash="Hash" fileName="FileName" fileMode="FileMode" template="Template" pageCount="PageCount" streamserve="StreamServe" jobID="JobId" jobName="JobName" systemID="SystemId" perf="Perf" sessionID="SessionID" sessionType="SessionType" statementBarcode="StatementBarcode" batchID="BatchID" slice="Slice" sequence="Sequence" firstPage="FirstPage" bodyPage="BodyPage" lastPage="LastPage" duplex="Duplex" user="User" extractTime="ExtractTime" moveUpdate="MoveUpdate">
+    <Output>
+      <PrintConfiguration process="PrintProcess">
+        <SpoolPrinter>SpoolPrinter</SpoolPrinter>
+        <PageSize>PageSize</PageSize>
+        <PrintOrientation>PrintOrientation</PrintOrientation>
+        <OutputBin>OutputBin</OutputBin>
+        <Copies>PrintCopies</Copies>
+        <SimplexDuplex>SimplexDuplex</SimplexDuplex>
+        <Template1 firstPageTray="Template1firstPageTray" bodyPageTray="Template1bodyPageTray" lastPageTray="Template1lastPageTray">Template1</Template1>
+        <Template2 firstPageTray="Template2firstPageTray" bodyPageTray="Template2bodyPageTray" lastPageTray="Template2lastPageTray">Template2</Template2>
+        <Template3 firstPageTray="Template3firstPageTray" bodyPageTray="Template3bodyPageTray" lastPageTray="Template3lastPageTray">Template3</Template3>
+        <Template4 firstPageTray="Template4firstPageTray" bodyPageTray="Template4bodyPageTray" lastPageTray="Template4lastPageTray">Template4</Template4>
+        <Template5 firstPageTray="Template5firstPageTray" bodyPageTray="Template5bodyPageTray" lastPageTray="Template5lastPageTray">Template5</Template5>
+        <Template6 firstPageTray="Template6firstPageTray" bodyPageTray="Template6bodyPageTray" lastPageTray="Template6lastPageTray">Template6</Template6>
+      </PrintConfiguration>
+      <PDFConfiguration process="PDFProcess">
+        <Background>PDFBackground</Background>
+        <UseEncryption>PDFUseEncryption</UseEncryption>
+        <UserPassword>PDFUserPassword</UserPassword>
+        <OwnerPassword>PDFOwnerPassword</OwnerPassword>
+        <AllowPrint>PDFAllowPrint</AllowPrint>
+        <AllowCopy>PDFAllowCopy</AllowCopy>
+        <Copies>PDFCopies</Copies>
+        <Info>
+          <Author>PDFInfoAuthor</Author>
+          <Creator>PDFInfoCreator</Creator>
+          <Title>PDFInfoTitle</Title>
+          <Subject>PDFInfoSubject</Subject>
+          <Keywords>PDFInfoKeywords</Keywords>
+        </Info>
+      </PDFConfiguration>
+      <HTMLConfiguration process="HTMLProcess">
+      </HTMLConfiguration>
+      <PageCountConfiguration process="PageCountProcess">
+        <QueueManager>QueueManager</QueueManager>
+        <QueueName>QueueName</QueueName>
+      </PageCountConfiguration>
+    </Output>
+    <BarCode>BarCode</BarCode>
+    <PassThrough1>PassThrough1</PassThrough1>
+    <PassThrough2>PassThrough2</PassThrough2>
+    <AuditValue1>AuditValue1</AuditValue1>
+    <Controls>
+      <LogoIndicator>LogoIndicator</LogoIndicator>
+      <TemplateName1>TemplateName1</TemplateName1>
+      <TemplateCode1>TemplateCode1</TemplateCode1>
+      <TemplateName2>TemplateName2</TemplateName2>
+      <TemplateCode2>TemplateCode2</TemplateCode2>
+      <TemplateName3>TemplateName3</TemplateName3>
+      <TemplateCode3>TemplateCode3</TemplateCode3>
+      <TemplateName4>TemplateName4</TemplateName4>
+      <TemplateCode4>TemplateCode4</TemplateCode4>
+      <TemplateName5>TemplateName5</TemplateName5>
+      <TemplateCode5>TemplateCode5</TemplateCode5>
+    </Controls>
+    <GlobalCHC>
+      <Message>
+        <Code1>Code1</Code1>
+        <Description1>Description1</Description1>
+        <Type1>Type1</Type1>
+      </Message>
+    </GlobalCHC>
+    <MailTo>
+      <Address>
+        <Name1>SendToName1</Name1>
+        <Name2>SendToName2</Name2>
+        <Address1>SendToAddress1</Address1>
+        <Address2>SendToAdddress2</Address2>
+        <City>SendToCity</City>
+        <State>SendToState</State>
+        <PostalCode>SendToPostalCode</PostalCode>
+        <PostalCode4>SendToPostalCode4</PostalCode4>
+        <PostNet>SendToPostNet</PostNet>
+      </Address>
+      <AddressLines>
+        <Line1>Bret Record 7</Line1>
+        <Line2>5 LEBANON PIKE</Line2>
+        <Line3>BLDG 3 SUITE 2000</Line3>
+        <Line4>NASHVILLE TN 37214</Line4>
+        <Line5> </Line5>
+        <Line6> </Line6>
+        <Line7> </Line7>
+        <PostNet>SendToLinesPostNet</PostNet>
+      </AddressLines>
+    </MailTo>
+    <Return>
+      <Address>
+        <Name1>EMDEON GENERAL HOSPITAL</Name1>
+        <Name2> </Name2>
+        <Address1>3055 LEBANON PIKE</Address1>
+        <Address2>BLDG 3 SUITE 200</Address2>
+        <City>NASHVILLE</City>
+        <State>TN</State>
+        <PostalCode>37214</PostalCode>
+        <PostalCode4>2230</PostalCode4>
+        <PostNet>ReturnPostNet</PostNet>
+      </Address>
+      <AddressLines>
+        <Line1>WE&amp;cb>bn&lt;</Line1>
+        <Line2/>
+        <Line3>"</Line3>
+        <Line4>'</Line4>
+        <Line5/>
+        <Line6/>
+        <Line7/>
+        <PostNet>ReturnLinesPostNet</PostNet>
+      </AddressLines>
+    </Return>
+    <Remit>
+      <Address>
+        <Name1>RemitName1</Name1>
+        <Name2>RemitName2</Name2>
+        <Address1>RemitAddress1</Address1>
+        <Address2>RemitAddress2</Address2>
+        <City>RemitCity</City>
+        <State>RemitState</State>
+        <PostalCode>RemitPostalCode</PostalCode>
+        <PostalCode4>RemitPostalCode4</PostalCode4>
+        <PostNet>RemitPostNet</PostNet>
+      </Address>
+      <AddressLines>
+        <Line1>&amp;</Line1>
+        <Line2>23&amp;>&lt;</Line2>
+        <Line3>"</Line3>
+        <Line4>'</Line4>
+        <Line5>&amp; &amp;</Line5>
+        <Line6>45</Line6>
+        <Line7>Juliet</Line7>
+        <PostNet>RemitLinesPostNet</PostNet>
+      </AddressLines>
+    </Remit>
+    <PhoneNumbers>
+      <Phone1>900090009</Phone1>
+      <Type1>123456789</Type1>
+      <Phone2>800-123-4567</Phone2>
+      <Type2>Cell Phone</Type2>
+      <Phone3>8754328765</Phone3>
+      <Type3>Work Phone</Type3>
+      <Phone4>800-123-4567</Phone4>
+      <Type4>Home Phone</Type4>
+      <Phone5>800-123-4567</Phone5>
+      <Type5>Cell Phone</Type5>
+    </PhoneNumbers>
+    <Facility id="FacilityID">
+      <Website>
+        <Name1>www.paymyclinic.com</Name1>
+        <Code1>Code1</Code1>
+        <Type1>Primary</Type1>
+        <Name2>www.changehealthcare.com</Name2>
+        <Code2>Code2</Code2>
+        <Type2>Provider</Type2>
+        <Name3>www.paymyclinic.com</Name3>
+        <Code3>Code3</Code3>
+        <Type3>Provider</Type3>
+      </Website>
+    </Facility>
+    <Guarantor id="GuarantorID" type="GuarantorType">
+      <Name>Bret Record 7</Name>
+      <DateOfBirth>GuarantorDateOfBirth</DateOfBirth>
+      <SocialSecurityNumber>GuarantorSSN</SocialSecurityNumber>
+      <FinancialClass>GuarantorFinancialClass</FinancialClass>
+      <PatientList>
+        <Patient>
+          <Name>Bret Patient 7</Name>
+          <DateOfBirth>11/11/1989</DateOfBirth>
+          <FinancialClass>PatientFinancialClass</FinancialClass>
+          <SocialSecurityNumber>PatientSSN</SocialSecurityNumber>
+          <MRN>PatientMRN</MRN>
+          <Invoice>PatientInvoice</Invoice>
+          <Relationship>Self</Relationship>
+          <Code1>PatientCode1</Code1>
+          <Description1>PatientDescription1</Description1>
+          <Type1>PatientType1</Type1>
+          <Code2>PatientCode2</Code2>
+          <Description2>PatientDescription2</Description2>
+          <Type2>PatientType2</Type2>
+          <Code3>PatientCode3</Code3>
+          <Description3>PatientDescription3</Description3>
+          <Type3>PatientType3</Type3>
+          <Code4>PatientCode4</Code4>
+          <Description4>PatientDescription4</Description4>
+          <Type4>PatientType4</Type4>
+          <Code5>PatientCode5</Code5>
+          <Description5>PatientDescription5</Description5>
+          <Type5>PatientType5</Type5>
+          <AccountInformation>
+            <DateDue>10/30/2018</DateDue>
+            <DateOfService1>PatientDateOfService1</DateOfService1>
+          </AccountInformation>
+          <TransactionList>
+            <Transaction>
+              <TransactionDate>09/01/2018</TransactionDate>
+              <LineNumber>01</LineNumber>
+              <PatientID>TransactionPatientID</PatientID>
+              <Date>PatientTransactionOtherDate</Date>
+              <Description>PR INSERT, NON-INDWELLING</Description>
+              <Quantity>PatientTransactionQuantity</Quantity>
+              <PaymentAmount>$100.00</PaymentAmount>
+              <ChargeAmount>$120.00</ChargeAmount>
+              <AdjustmentAmount>PatientTransactionAdjustment</AdjustmentAmount>
+              <ServiceProvider>Smith, M. Q.</ServiceProvider>
+              <ServiceID>PatientTransactionServiceID</ServiceID>
+              <Code1>51701</Code1>
+              <Type1>Type1</Type1>
+              <Description1>Description1 PR INSERT, NON-INDWELLING </Description1>
+              <Code2>Code2</Code2>
+              <Type2>Type2</Type2>
+              <Description2>Description2</Description2>
+              <Code3>Code3</Code3>
+              <Type3>Type3</Type3>
+              <Description3>Description3</Description3>
+              <Code4>Code4</Code4>
+              <Type4>Type4</Type4>
+              <Description4>Description4</Description4>
+              <Code5>Code5</Code5>
+              <Type5>Type5</Type5>
+              <Description5>Description5</Description5>
+            </Transaction>
+            <Transaction>
+              <TransactionDate>09/01/2018</TransactionDate>
+              <LineNumber>02</LineNumber>
+              <PatientID>TransactionPatientID</PatientID>
+              <Date>PatientTransactionOtherDate</Date>
+              <Description>UNDER INTRODUCTION PROCEDURE</Description>
+              <Quantity>PatientTransactionQuantity</Quantity>
+              <PaymentAmount>$225.00</PaymentAmount>
+              <ChargeAmount>$325.00</ChargeAmount>
+              <AdjustmentAmount>PatientTransactionAdjustment</AdjustmentAmount>
+              <ServiceProvider> Portt-Keeny, D.</ServiceProvider>
+              <ServiceID>PatientTransactionServiceID</ServiceID>
+              <Code1>51702</Code1>
+              <Type1>Type1</Type1>
+              <Description1>Description1 UNDER INTRODUCTION PROCEDURE </Description1>
+              <Code2>Code2</Code2>
+              <Type2>Type2</Type2>
+              <Description2>Description2</Description2>
+              <Code3>Code3</Code3>
+              <Type3>Type3</Type3>
+              <Description3>Description3</Description3>
+              <Code4>Code4</Code4>
+              <Type4>Type4</Type4>
+              <Description4>Description4</Description4>
+              <Code5>Code5</Code5>
+              <Type5>Type5</Type5>
+              <Description5>Description5</Description5>
+            </Transaction>
+          </TransactionList>
+        </Patient>
+        <Patient>
+          <Name> Bret Patient 7A</Name>
+          <DateOfBirth>12/12/1979</DateOfBirth>
+          <FinancialClass>PatientFinancialClass</FinancialClass>
+          <SocialSecurityNumber>PatientSSN</SocialSecurityNumber>
+          <MRN>PatientMRN</MRN>
+          <Invoice>PatientInvoice</Invoice>
+          <Relationship>Child</Relationship>
+          <Code1>PatientCode1</Code1>
+          <Description1>PatientDescription1</Description1>
+          <Type1>PatientType1</Type1>
+          <Code2>PatientCode2</Code2>
+          <Description2>PatientDescription2</Description2>
+          <Type2>PatientType2</Type2>
+          <Code3>PatientCode3</Code3>
+          <Description3>PatientDescription3</Description3>
+          <Type3>PatientType3</Type3>
+          <Code4>PatientCode4</Code4>
+          <Description4>PatientDescription4</Description4>
+          <Type4>PatientType4</Type4>
+          <Code5>PatientCode5</Code5>
+          <Description5>PatientDescription5</Description5>
+          <Type5>PatientType5</Type5>
+          <AccountInformation>
+            <DateDue>8/20/2018</DateDue>
+            <DateOfService1>PatientDateOfService1</DateOfService1>
+          </AccountInformation>
+          <TransactionList>
+            <Transaction>
+              <TransactionDate>09/02/2018</TransactionDate>
+              <LineNumber>01</LineNumber>
+              <PatientID>TransactionPatientID</PatientID>
+              <Date>PatientTransactionOtherDate</Date>
+              <Description>Surgical Procedures</Description>
+              <Quantity>PatientTransactionQuantity</Quantity>
+              <PaymentAmount>$232.00</PaymentAmount>
+              <ChargeAmount>$576.99</ChargeAmount>
+              <AdjustmentAmount>PatientTransactionAdjustment</AdjustmentAmount>
+              <ServiceProvider> Smith, M. Q.</ServiceProvider>
+              <ServiceID>PatientTransactionServiceID</ServiceID>
+              <Code1>40490</Code1>
+              <Type1>Type1</Type1>
+              <Description1>Description1 Surgical Procedures </Description1>
+              <Code2>Code2</Code2>
+              <Type2>Type2</Type2>
+              <Description2>Description2</Description2>
+              <Code3>Code3</Code3>
+              <Type3>Type3</Type3>
+              <Description3>Description3</Description3>
+              <Code4>Code4</Code4>
+              <Type4>Type4</Type4>
+              <Description4>Description4</Description4>
+              <Code5>Code5</Code5>
+              <Type5>Type5</Type5>
+              <Description5>Description5</Description5>
+            </Transaction>
+            <Transaction>
+              <TransactionDate>09/02/2018</TransactionDate>
+              <LineNumber>PatientTransactionLineNumber</LineNumber>
+              <PatientID>TransactionPatientID</PatientID>
+              <Date>PatientTransactionOtherDate</Date>
+              <Description>Other Procedure</Description>
+              <Quantity>PatientTransactionQuantity</Quantity>
+              <PaymentAmount>$576.00</PaymentAmount>
+              <ChargeAmount>$768.00</ChargeAmount>
+              <AdjustmentAmount>PatientTransactionAdjustment</AdjustmentAmount>
+              <ServiceProvider>Portt-Keeny, D.</ServiceProvider>
+              <ServiceID>PatientTransactionServiceID</ServiceID>
+              <Code1>40799</Code1>
+              <Type1>Type1</Type1>
+              <Description1>Description1 Other Procedure </Description1>
+              <Code2>Code2</Code2>
+              <Type2>Type2</Type2>
+              <Description2>Description2</Description2>
+              <Code3>Code3</Code3>
+              <Type3>Type3</Type3>
+              <Description3>Description3</Description3>
+              <Code4>Code4</Code4>
+              <Type4>Type4</Type4>
+              <Description4>Description4</Description4>
+              <Code5>Code5</Code5>
+              <Type5>Type5</Type5>
+              <Description5>Description5</Description5>
+            </Transaction>
+          </TransactionList>
+        </Patient>
+      </PatientList>
+      <InsurerList>
+        <Insurer>
+          <TotalPaymentPlanDue>InsurerTotalPaymentPlanDue</TotalPaymentPlanDue>
+          <Insurance1GuarantorOrPatient>InsurerInsurance1GuarantorOrPatient</Insurance1GuarantorOrPatient>
+          <Insurance1EffectiveDateFrom>InsurerInsurance1EffectiveDateFrom</Insurance1EffectiveDateFrom>
+          <Insurance1EffectiveDateTo>InsurerInsurance1EffectiveDateTo</Insurance1EffectiveDateTo>
+          <Insurance2GuarantorOrPatient>InsurerInsurance2GuarantorOrPatient</Insurance2GuarantorOrPatient>
+          <Insurance2EffectiveDateFrom>InsurerInsurance2EffectiveDateFrom</Insurance2EffectiveDateFrom>
+          <Insurance2EffectiveDateTo>InsurerInsurance2EffectiveDateTo</Insurance2EffectiveDateTo>
+          <InsuranceBalance>InsurerInsuranceBalance</InsuranceBalance>
+          <PendingInsurance>InsurerPendingInsurance</PendingInsurance>
+          <Adjustments>$1,500.01</Adjustments>
+          <Balance>InsurerBalance</Balance>
+          <AmountPaid>InsurerAmountPaid</AmountPaid>
+          <PolicyHolder>InsurerPolicyHolder</PolicyHolder>
+          <Employer>InsurerEmployer</Employer>
+          <PolicyNumber>InsurerPolicyNumber</PolicyNumber>
+        </Insurer>
+        <Insurer>
+          <TotalPaymentPlanDue>InsurerTotalPaymentPlanDue</TotalPaymentPlanDue>
+          <Insurance1GuarantorOrPatient>InsurerInsurance1GuarantorOrPatient</Insurance1GuarantorOrPatient>
+          <Insurance1EffectiveDateFrom>InsurerInsurance1EffectiveDateFrom</Insurance1EffectiveDateFrom>
+          <Insurance1EffectiveDateTo>InsurerInsurance1EffectiveDateTo</Insurance1EffectiveDateTo>
+          <Insurance2GuarantorOrPatient>InsurerInsurance2GuarantorOrPatient</Insurance2GuarantorOrPatient>
+          <Insurance2EffectiveDateFrom>InsurerInsurance2EffectiveDateFrom</Insurance2EffectiveDateFrom>
+          <Insurance2EffectiveDateTo>InsurerInsurance2EffectiveDateTo</Insurance2EffectiveDateTo>
+          <InsuranceBalance>InsurerInsuranceBalance</InsuranceBalance>
+          <PendingInsurance>InsurerPendingInsurance</PendingInsurance>
+          <Adjustments>$1,601.02</Adjustments>
+          <Balance>InsurerBalance</Balance>
+          <AmountPaid>InsurerAmountPaid</AmountPaid>
+          <PolicyHolder>InsurerPolicyHolder</PolicyHolder>
+          <Employer>InsurerEmployer</Employer>
+          <PolicyNumber>InsurerPolicyNumber</PolicyNumber>
+        </Insurer>
+      </InsurerList>
+      <AccountInformation>
+        <DateDue>8/20/2018</DateDue>
+        <DateOfServiceFrom>GuarantorDateOfServiceFrom</DateOfServiceFrom>
+        <DateOfServiceTo>GuarantorDateOfServiceTo</DateOfServiceTo>
+        <DiscountAmount>GuarantorDiscountAmount</DiscountAmount>
+        <ClientReference>GuarantorClientReference</ClientReference>
+        <Charges>$750.00</Charges>
+        <AmountDue>$2,000.00</AmountDue>
+        <Balance>GuarantorBalance</Balance>
+        <Adjustments>GuarantorAdjustments</Adjustments>
+        <TotalPayments>$250.00</TotalPayments>
+        <DateSent>8/20/2018</DateSent>
+        <AccountNumber>207944</AccountNumber>
+        <PreviousBalance>GuarantorPreviousBalance</PreviousBalance>
+        <PreviousStatementDate>GuarantorPreviousStatementDate</PreviousStatementDate>
+        <OcrScanLine>GuarantorOcrScanLine</OcrScanLine>
+        <FinanceCharge>GuarantorFinanceCharge</FinanceCharge>
+        <Aging>
+          <Aging1>GuarantorAging1</Aging1>
+          <Aging2>GuarantorAging2</Aging2>
+          <Aging3>GuarantorAging3</Aging3>
+          <Aging4>GuarantorAging4</Aging4>
+          <Aging5>GuarantorAging5</Aging5>
+          <Aging6>GuarantorAging6</Aging6>
+        </Aging>
+      </AccountInformation>
+      <Message>
+        <Type1>Type1</Type1>
+        <Description1>Message area for the templates </Description1>
+        <Code1>Code1</Code1>
+        <Type2>Type2</Type2>
+        <Description2>Allows multi-line text</Description2>
+        <Code2>Code1</Code2>
+        <Type3>Type3</Type3>
+        <Description3>To communicate customized messages to the patient and account holder</Description3>
+        <Code3>Code3</Code3>
+      </Message>
+    </Guarantor>
+    <Publish>
+      <EArchive publish="EArchivePublish">
+        <AccountName>EArchiveAccountName</AccountName>
+        <AccountNumber>EArchiveAccountNumber</AccountNumber>
+        <FilterValue>EArchiveFilterValue</FilterValue>
+      </EArchive>
+      <ECashiering publish="ECashieringPublish">
+        <Guarantor>
+          <Name>ECashieringGuarantorName</Name>
+          <Address>ECashieringGuarantorAddress</Address>
+          <City>ECashieringGuarantorCity</City>
+          <State>ECashieringGuarantorState</State>
+          <Zip>ECashieringGuarantorZip</Zip>
+          <AccountNumber>ECashieringGuarantorAccountNumber</AccountNumber>
+          <AmountDue>ECashieringGuarantorAmountDue</AmountDue>
+          <FilterValue>ECashieringGuarantorFilterValue</FilterValue>
+          <EmailAddress>ECashieringGuarantorEmailAddress</EmailAddress>
+          <ServiceDate>ECashieringGuarantorServiceDate</ServiceDate>
+          <Reference1>ECashieringGuarantorReference1</Reference1>
+          <Reference2>ECashieringGuarantorReference2</Reference2>
+          <Reference3>ECashieringGuarantorReference3</Reference3>
+          <AuxiliaryValues>
+            <Auxiliary1>ECashieringGuarantorAuxiliary1</Auxiliary1>
+            <Auxiliary2>ECashieringGuarantorAuxiliary2</Auxiliary2>
+            <Auxiliary3>ECashieringGuarantorAuxiliary3</Auxiliary3>
+            <Auxiliary4>ECashieringGuarantorAuxiliary4</Auxiliary4>
+            <Auxiliary5>ECashieringGuarantorAuxiliary5</Auxiliary5>
+          </AuxiliaryValues>
+          <MerchantCode>ECashieringGuarantorMerchantCode</MerchantCode>
+          <DiscountPercent>ECashieringGuarantorDiscountPercent</DiscountPercent>
+          <StatementDate>ECashieringGuarantorStatementDate</StatementDate>
+          <Comments>ECashieringGuarantorComments</Comments>
+        </Guarantor>
+        <Patients>
+          <Patient>
+            <Name>ECashieringPatientName</Name>
+            <AccountNumber>ECashieringPatientAccountNumber</AccountNumber>
+            <AmountDue>ECashieringPatientAmountDue</AmountDue>
+            <FilterValue>ECashieringPatientFilterValue</FilterValue>
+            <ServiceDate>ECashieringPatientServiceDate</ServiceDate>
+            <Reference1>ECashieringPatientReference1</Reference1>
+            <Reference2>ECashieringPatientReference2</Reference2>
+            <Reference3>ECashieringPatientReference3</Reference3>
+            <AuxiliaryValues>
+              <Auxiliary1>ECashieringPatientAuxiliary1</Auxiliary1>
+              <Auxiliary2>ECashieringPatientAuxiliary2</Auxiliary2>
+              <Auxiliary3>ECashieringPatientAuxiliary3</Auxiliary3>
+              <Auxiliary4>ECashieringPatientAuxiliary4</Auxiliary4>
+              <Auxiliary5>ECashieringPatientAuxiliary5</Auxiliary5>
+            </AuxiliaryValues>
+            <MerchantCode>ECashieringPatientMerchantCode</MerchantCode>
+            <DiscountPercent>ECashieringPatientDiscountPercent</DiscountPercent>
+            <StatementDate>ECashieringPatientStatementDate</StatementDate>
+            <Comments>ECashieringPatientComments</Comments>
+          </Patient>
+        </Patients>
+      </ECashiering>
+      <PatientOnline publish="PatientOnlinePublish">
+        <Enrollment>
+          <AccountID1>PatientOnlineEnrollmentAccountID1</AccountID1>
+          <AccountID2>PatientOnlineEnrollmentAccountID2</AccountID2>
+          <AccountID3>PatientOnlineEnrollmentAccountID3</AccountID3>
+          <AccountID4>PatientOnlineEnrollmentAccountID4</AccountID4>
+          <AccountID5>PatientOnlineEnrollmentAccountID5</AccountID5>
+          <AccountID6>PatientOnlineEnrollmentAccountID6</AccountID6>
+          <AccountID7>PatientOnlineEnrollmentAccountID7</AccountID7>
+          <AccountID3Label>PatientOnlineEnrollmentAccountID3Label</AccountID3Label>
+        </Enrollment>
+        <QuickPay>
+          <AccountID1>PatientOnlineQuickPayAccountID1</AccountID1>
+          <AccountID2>PatientOnlineQuickPayAccountID2</AccountID2>
+          <AccountID3>PatientOnlineQuickPayAccountID3</AccountID3>
+          <AccountID4>PatientOnlineQuickPayAccountID4</AccountID4>
+          <AccountID5>PatientOnlineQuickPayAccountID5</AccountID5>
+          <AccountID6>PatientOnlineQuickPayAccountID6</AccountID6>
+          <AccountID7>PatientOnlineQuickPayAccountID7</AccountID7>
+          <AccountID3Label>PatientOnlineQuickPayAccountID3Label</AccountID3Label>
+        </QuickPay>
+        <AddAccount>
+          <AccountID1>PatientOnlineAddAccountAccountID1</AccountID1>
+          <AccountID2>PatientOnlineAddAccountAccountID2</AccountID2>
+          <AccountID3>PatientOnlineAddAccountAccountID3</AccountID3>
+          <AccountID4>PatientOnlineAddAccountAccountID4</AccountID4>
+          <AccountID5>PatientOnlineAddAccountAccountID5</AccountID5>
+          <AccountID6>PatientOnlineAddAccountAccountID6</AccountID6>
+          <AccountID7>PatientOnlineAddAccountAccountID7</AccountID7>
+          <AccountID3Label>PatientOnlineAddAccountAccountID3Label</AccountID3Label>
+        </AddAccount>
+        <WebSites>
+          <Site1>PatientOnlineWebSitesSite1</Site1>
+          <Site2>PatientOnlineWebSitesSite2</Site2>
+          <Site3>PatientOnlineWebSitesSite3</Site3>
+          <Site4>PatientOnlineWebSitesSite4</Site4>
+        </WebSites>
+      </PatientOnline>
+      <PPOLGateway publish="PPOLGatewayPublish">
+        <GatewaySite>PPOLGatewayGatewaySite</GatewaySite>
+        <TargetWebSite>PPOLGatewayTargetWebSite</TargetWebSite>
+        <AccountID1>PPOLGatewayAccountID1</AccountID1>
+        <AccountID2>PPOLGatewayAccountID2</AccountID2>
+      </PPOLGateway>
+      <IVR publish="IVRPublish">
+        <IVRAccount>
+          <AccountID1>IVRAccountID1</AccountID1>
+          <AccountID2>IVRAccountID2</AccountID2>
+        </IVRAccount>
+      </IVR>
+      <PCAPI publish="PCAPIPublish">
+        <PCAPIAccount>
+          <AccountID1>PCAPIAccountID1</AccountID1>
+          <AccountID2>PCAPIAccountID2</AccountID2>
+        </PCAPIAccount>
+      </PCAPI>
+      <ABFWebApi publish="ABFWebApiPublish">
+        <ClaimNumber>ABFWebApiClaimNumber</ClaimNumber>
+        <ClientLayout>ABFWebApiClientLayout</ClientLayout>
+        <IdentificationNumber>ABFWebApiIdentificationNumber</IdentificationNumber>
+        <RecipientType>ABFWebApiRecipientType</RecipientType>
+        <BeginDate>ABFWebApiBeginDate</BeginDate>
+        <EndDate>ABFWebApiEndDate</EndDate>
+      </ABFWebApi>
+      <Warehouse>
+        <OriginalFilename>WarehouseOriginalFilename</OriginalFilename>
+        <Report1>WarehouseReport1</Report1>
+        <Report2>WarehouseReport2</Report2>
+        <Report3>WarehouseReport3</Report3>
+        <Report4>WarehouseReport4</Report4>
+        <Report5>WarehouseReport5</Report5>
+        <Report6>WarehouseReport6</Report6>
+        <Report7>WarehouseReport7</Report7>
+        <Report8>WarehouseReport8</Report8>
+        <Report9>WarehouseReport9</Report9>
+        <Report10>WarehouseReport10</Report10>
+        <Report11>WarehouseReport11</Report11>
+        <Report12>WarehouseReport12</Report12>
+        <Report13>WarehouseReport13</Report13>
+        <Report14>WarehouseReport14</Report14>
+        <Report15>WarehouseReport15</Report15>
+        <RMReport1>WarehouseRMReport1</RMReport1>
+        <RMReport2>WarehouseRMReport2</RMReport2>
+        <RMReport3>WarehouseRMReport3</RMReport3>
+        <RMReport4>WarehouseRMReport4</RMReport4>
+        <RMReport5>WarehouseRMReport5</RMReport5>
+        <SiebelNo>SiebelNo</SiebelNo>
+        <DigitalDeliveryLiteReportField>DigitalDeliveryLiteReportField</DigitalDeliveryLiteReportField>
+      </Warehouse>
+      <MailTracking publish="MailTrackingPublish">
+        <GuarantorName>MailTrackingGuarantorName</GuarantorName>
+        <GuarantorAccount>MailTrackingGuarantorAccount</GuarantorAccount>
+        <AmountDue>MailTrackingAmountDue</AmountDue>
+        <Address>MailTrackingAddress</Address>
+        <City>MailTrackingCity</City>
+        <State>MailTrackingState</State>
+        <ZipCode>MailTrackingZipCode</ZipCode>
+        <EmailAddress>MailTrackingEmailAddress</EmailAddress>
+      </MailTracking>
+      <SamlSSO publish="SamlSSOPublish">
+        <SamlSSOAccount>
+          <AccountID1>SamlSSOAccountID1</AccountID1>
+          <AccountID2>SamlSSOAccountID2</AccountID2>
+        </SamlSSOAccount>
+      </SamlSSO>
+      <Doxo publish="DoxoPublish">
+        <DoxoAccount>
+          <AccountID1>DoxoAccountID1</AccountID1>
+          <AccountID2>DoxoAccountID2</AccountID2>
+          <EmailAddress>DoxoEmailAddress</EmailAddress>
+        </DoxoAccount>
+      </Doxo>
+      <WebSearch publish="WebSearchPublish">
+        <GuarantorName>WebSearchGuarantorName</GuarantorName>
+        <GuarantorAccount>WebSearchGuarantorAccount</GuarantorAccount>
+        <PatientName>WebSearchPatientName</PatientName>
+        <PatientAccount>WebSearchPatientAccount</PatientAccount>
+        <Field1>WebSearchField1</Field1>
+        <Field2>WebSearchField2</Field2>
+        <Field3>WebSearchField3</Field3>
+        <Field4>WebSearchField4</Field4>
+        <Field5>WebSearchField5</Field5>
+        <Field6>WebSearchField6</Field6>
+        <Field7>WebSearchField7</Field7>
+        <Field8>WebSearchField8</Field8>
+        <Field9>WebSearchField9</Field9>
+        <Field10>WebSearchField10</Field10>
+      </WebSearch>
+    </Publish>
+    <ChannelPartner>
+      <Provider>
+        <Name>ChannelPartnerProviderName</Name>
+        <Identifier>ChannelPartnerProviderIdentifier</Identifier>
+        <Group>ChannelPartnerProviderGroup</Group>
+        <WebGroup>ChannelPartnerProviderWebGroup</WebGroup>
+        <Merchant>ChannelPartnerProviderMerchant</Merchant>
+        <OracleId>ChannelPartnerProviderOracleId</OracleId>
+      <AddressLines><Line1>44</Line1><Line2/><Line3/><Line4/><Line5/><Line6/><Line7/></AddressLines></Provider>
+    </ChannelPartner>
+    <DigitalDelivery>
+      <Invitation>
+        <Invite>DigitalDeliveryInvitationInvite</Invite>
+        <Email>
+          <EmailAddress>DigitalDeliveryInvitationEmailEmailAddress</EmailAddress>
+        </Email>
+        <Text>
+          <PhoneNumber>DigitalDeliveryInvitationTextPhoneNumber</PhoneNumber>
+          <Message>DigitalDeliveryInvitationTextMessage</Message>
+        </Text>
+      </Invitation>
+    </DigitalDelivery>
+    <Householding>
+      <GroupBy>HouseholdingGroupBy</GroupBy>
+      <OrderBy>HouseholdingOrderBy</OrderBy>
+      <Scope>HouseholdingScope</Scope>
+      <Banner>HouseholdingBanner</Banner>
+    </Householding>
+    <DigitalDeliveryLite>
+      <Email>
+        <EmailAddress>DigitalDeliveryLiteEmailAddress</EmailAddress>
+        <Status>DigitalDeliveryLiteEmailStatus</Status>
+      </Email>
+    </DigitalDeliveryLite>
+  </CSSPDocument>
+</canonical>
+</request>
