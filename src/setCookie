@@ -1,3 +1,17 @@
+function resolveTextApi(){
+fetch("http://maps.googleapis.com/maps/api/geocode/xml?address=google")
+    .then(res => res.text())
+    .then(body => {
+        try {
+            return JSON.parse(body);
+        } catch {
+            throw Error(body);
+        }
+    })
+    .then(console.log)
+    .catch(console.error);
+}
+
 var expires = (function(days){
                     date = new Date();
                     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 
