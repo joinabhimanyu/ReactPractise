@@ -1,4 +1,5 @@
 http://marcelog.github.io/articles/aws_api_gateway_return_custom_http_status_codes.html
+https://kennbrodhagen.net/2016/03/09/how-to-return-a-custom-error-object-and-status-code-from-api-gateway-with-lambda/
 
 #set ($errorMessageObj = $util.parseJson($input.path('$.errorMessage')))
 {"errors" : [
