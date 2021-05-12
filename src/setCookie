@@ -1,3 +1,12 @@
+http://marcelog.github.io/articles/aws_api_gateway_return_custom_http_status_codes.html
+
+#set ($errorMessageObj = $util.parseJson($input.path('$.errorMessage')))
+{"errors" : [
+  #foreach( $e in $errorMessageObj.errors )
+    "$e"#if($foreach.hasNext),#end
+  #end
+]}
+
 function resolveTextApi(){
 fetch("http://maps.googleapis.com/maps/api/geocode/xml?address=google")
     .then(res => res.text())
